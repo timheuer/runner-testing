@@ -43,5 +43,5 @@ jobs:
 
     - name: Var echo 2
       run: |
-        echo $env:$CURRENT_DATE
+        echo $env:CURRENT_DATE
       shell: pwsh
