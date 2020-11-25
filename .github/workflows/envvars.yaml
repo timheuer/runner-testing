@@ -32,7 +32,7 @@ jobs:
       
     - name: Set date env
       run: |
-        Write-Host "CURRENT_DATE=$(Get-Date -format "yyyyMMdd")" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+        echo "CURRENT_DATE=$(Get-Date -format "yyyyMMdd")" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
       shell: pwsh
 
     - name: Vars
@@ -40,8 +40,3 @@ jobs:
         echo "Run ID: ${{ github.run_id }}"
         echo "Run Num: ${{ github.run_number }}"
         echo ${{ env.CURRENT_DATE }}
-
-    - name: Var echo 2
-      run: |
-        echo ${{ env.CURRENT_DATE }}
-      shell: pwsh
