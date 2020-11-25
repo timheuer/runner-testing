@@ -1,2 +1,2 @@
 # runner-testing
-GitHub Actions Runner Testing
+A quick playground for testing some environment variable stuff in GitHub Actions runners.
