@@ -41,5 +41,4 @@ jobs:
       run: |
         echo "Run ID: ${{ github.run_id }}"
         echo "Run Num: ${{ github.run_number }}"
-        echo $CURRENT_DATE
-        echo ${{ env.CURRENT_DATE }}
+        echo $env.CURRENT_DATE
