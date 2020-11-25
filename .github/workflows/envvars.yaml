@@ -31,14 +31,17 @@ jobs:
       run: echo ${{ github.workspace }}
       
     - name: Set date env
-      uses: azure/powershell@v1
-      with:
-        inlineScript: |
-          Write-Host "CURRENT_DATE=$(Get-Date -format "yyyyMMdd")" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-        azPSVersion: '3.1.0'
+      run: |
+        Write-Host "CURRENT_DATE=$(Get-Date -format "yyyyMMdd")" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+      shell: powershell
 
     - name: Vars
       run: |
         echo "Run ID: ${{ github.run_id }}"
         echo "Run Num: ${{ github.run_number }}"
         echo $CURRENT_DATE
+
+    - name: Var echo 2
+      run: |
+        echo $env:$CURRENT_DATE
+      shell: powershell
