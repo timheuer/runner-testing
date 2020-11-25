@@ -1,0 +1,44 @@
+name: "ENV vars"
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.gitignore'
+      - '**/*.gitattributes'
+  workflow_dispatch:
+    branches:
+      - master
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.gitignore'
+      - '**/*.gitattributes'
+      
+jobs:
+  build:
+    name: envvars
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Show workspace
+      run: echo ${{ github.workspace }}
+      
+    - name: Set date env
+      uses: azure/powershell@v1
+      with:
+        inlineScript: |
+          Write-Host "CURRENT_DATE=$(Get-Date -format "yyyyMMdd")" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+        azPSVersion: '3.1.0'
+
+    - name: Vars
+      run: |
+        echo "Run ID: ${{ github.run_id }}"
+        echo "Run Num: ${{ github.run_number }}"
+        echo "Current Date: $CURRENT_DATE"
