@@ -28,3 +28,7 @@ jobs:
     - name: echo msbuild
       run: |
         msbuild -version
+
+    - name: build
+      run: |
+        msbuild runner-testing.csproj
