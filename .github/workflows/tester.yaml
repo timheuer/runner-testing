@@ -29,6 +29,9 @@ jobs:
       run: |
         msbuild -version
 
+    - name: restore
+      run: dotnet restore
+      
     - name: build
       run: |
         msbuild runner-testing.csproj
