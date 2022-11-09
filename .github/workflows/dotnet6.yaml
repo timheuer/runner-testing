@@ -1,4 +1,4 @@
-name: "setup-msbuild"
+name: "dotnet6test"
 
 on:
   workflow_dispatch:
@@ -11,7 +11,7 @@ on:
       
 jobs:
   build:
-    name: setup-dotnet
+    name: net6test
     runs-on: ubuntu-latest
 
     steps:
