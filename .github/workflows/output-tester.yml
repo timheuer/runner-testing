@@ -19,9 +19,17 @@ jobs:
 
     steps:
       - name: Set the value no ENV
-        id: step_one_a
+        id: step_one_a_ubuntu
+        if: matrix.os == 'ubuntu-latest'
         run: |
           echo "action_state=yellow" >> $GITHUB_ENV
+
+      - name: Set the value no ENV
+        id: step_one_a_windows
+        if: matrix.os == 'windows-latest'
+        run: |
+          echo "action_state=yellow" >> $Env:GITHUB_ENV
+
       - name: Use the value
         id: step_two_b
         run: |
