@@ -1,0 +1,37 @@
+name: "output tester"
+
+on:
+  workflow_dispatch:
+    branches:
+      - master
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.gitignore'
+      - '**/*.gitattributes'
+
+jobs:
+  build:
+    name: outputs
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+
+    steps:
+      - name: Set the value no ENV
+        id: step_one_a
+        run: |
+          echo "action_state=yellow" >> $GITHUB_ENV
+      - name: Use the value
+        id: step_two_b
+        run: |
+          echo "${{ env.action_state }}" # This will output 'yellow'
+
+      - name: Set the value with ENV
+        id: step_one_c
+        run: |
+          echo "action_state2=blue" >> $Env:GITHUB_ENV
+      - name: Use the value
+        id: step_two_d
+        run: |
+          echo "${{ env.action_state2 }}" # This will output 'blue'
