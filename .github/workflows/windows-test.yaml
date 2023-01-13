@@ -1,0 +1,22 @@
+name: "windows-testing"
+
+on:
+  workflow_dispatch:
+    branches:
+      - main
+      
+jobs:
+  build:
+    name: run stuff
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: npm install
+      run: |
+        npm install
+
+    - name: node test
+      run: |
+        node run
