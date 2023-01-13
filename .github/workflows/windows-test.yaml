@@ -18,5 +18,6 @@ jobs:
         npm install
 
     - name: node test
+      if: always()
       run: |
         node run
