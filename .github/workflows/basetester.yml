@@ -1,0 +1,17 @@
+name: Build App
+
+on:
+  workflow_dispatch:
+    branches:
+      - main
+
+jobs:
+  build_android_app_bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Decode some value
+        id: decode_upload_some_value
+        uses: timheuer/base64-to-file@v1
+        with:
+          fileName: some_value.txt
+          encodeString: ${{ secrets.SOME_SECRET }}
