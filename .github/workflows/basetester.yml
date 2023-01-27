@@ -1,4 +1,4 @@
-name: Build App
+name: Base64 Tester
 
 on:
   workflow_dispatch:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build_android_app_bundle:
+  decode:
     runs-on: ubuntu-latest
     steps:
       - name: Decode some value
@@ -14,4 +14,4 @@ jobs:
         uses: timheuer/base64-to-file@v1
         with:
           fileName: some_value.txt
-          encodeString: ${{ secrets.SOME_SECRET }}
+          encodedString: ${{ secrets.SOME_SECRET }}
