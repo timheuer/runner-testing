@@ -15,3 +15,6 @@ jobs:
         with:
           fileName: some_value.txt
           encodedString: ${{ secrets.SOME_SECRET }}
+      - name: test msbuild
+        run: |
+          msbuild --ver
